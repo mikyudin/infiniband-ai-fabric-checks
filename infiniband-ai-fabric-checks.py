@@ -139,6 +139,13 @@ FACTS = {
     "fcs": 4, "eth_preamble_sfd_ipg": 20,
     # Linux include/rdma/ib_verbs.h: enum ib_mtu tops out at IB_MTU_4096.
     "ib_mtu_max": 4096,
+    # A common switch jumbo MTU, quoted in the post only to say the room
+    # above the 4096-byte RDMA MTU goes unused. Not a published fact.
+    "jumbo_mtu_example": 9216,
+    # Broadcom Tomahawk Ultra release, 2025-07-15: "reducing Ethernet header
+    # overhead from 46 bytes to just 10 bytes". Broadcom's own accounting,
+    # not comparable with group 5's byte counts.
+    "tu_hdr_bytes_from": 46, "tu_hdr_bytes_to": 10,
 
     # --- Credit-based flow control. Crupnicoff (Mellanox), "InfiniBand
     # Credit-Based Link-Layer Flow-Control", IEEE 802.1 DCB TG, March 2014,
@@ -306,6 +313,10 @@ def group5():
     check("RoCEv2/IPv6 including preamble, SFD and minimum gap", w6, 102)
     note("  an 802.1Q tag would add, bytes", f["vlan"])
     note("IB transport MTU ceiling, bytes (also RoCE's)", f["ib_mtu_max"])
+    note("Jumbo MTU above it that RoCE cannot use, bytes",
+         f["jumbo_mtu_example"])
+    note("Tomahawk Ultra header claim, Broadcom's accounting, bytes",
+         (f["tu_hdr_bytes_from"], f["tu_hdr_bytes_to"]))
     p = f["ib_mtu_max"]
     e_ib = p / (p + ib) * 100
     e_h4 = p / (p + r4) * 100
