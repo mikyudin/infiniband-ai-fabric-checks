@@ -95,9 +95,10 @@ FACTS = {
     "x800_quoted_tbps": 115.2, "x800_quoted_two_tier": 10368,
     # 51.2 Tb/s Ethernet (Spectrum-4, Tomahawk 5): 64 x 800G or 128 x 400G.
     "eth51_ports_800": 64, "eth51_ports_400": 128,
-    # Broadcom Tomahawk 6 release, 2025-06-03, as reproduced by
-    # StorageReview: 102.4 Tb/s, "512 x 200Gbps, 1024 x 100Gbps";
-    # "100,000+ XPUs in a two-tier scale-out network at 200 Gbps/link".
+    # Broadcom Tomahawk 6 release, 2025-06-03 (investors.broadcom.com):
+    # "102.4 Terabits/sec of switching capacity in a single chip"; "an option
+    # for 1,024 100G SerDes"; "100,000+ XPUs in a two-tier scale-out network
+    # at 200 Gbps/link". 512 x 200G is the same 102.4 Tb/s.
     "th6_ports_200": 512, "th6_ports_800": 128,
     "th6_claimed_two_tier_min": 100_000,
     # NVIDIA Spectrum-X page: Spectrum-6 SN6600 "offers 128 ports of 800 G".
